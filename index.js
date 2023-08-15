@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 minOpacity: 0.5,
                 radius: 15,
                 blur: 10,
-                gradient: cmap.map(colorObj => colorObj.color).join(','),
+                gradient: cmap.map(colorObj => `${colorObj.position} ${colorObj.color}`).join(','),
             }).addTo(map);
 
             console.log('Interactive rainfall map generated.');
