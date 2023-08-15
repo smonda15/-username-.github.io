@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { color: '#00FF00', position: 0.5 },
     { color: '#FFFF00', position: 0.75 },
     { color: '#FF0000', position: 1 }
-        ];    
+];   
     
     
     let map; // Declare the map variable
