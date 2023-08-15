@@ -11,7 +11,7 @@ async function generateInteractiveRainfallMap(year, month) {
     const colIndex = (year - 1984) * 12 + (month - 10);
 
     try {
-        const response = await fetch('Rainfall_Data.csv');
+        const response = await fetch('/Rainfall_Data.csv');
         const csvData = await response.text();
 
         const parsedData = parseCSV(csvData);
