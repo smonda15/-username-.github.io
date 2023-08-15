@@ -2,7 +2,13 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
-    const cmap = colors;
+    const cmap = [
+    'blue',    // Change these color values to your desired colors
+    'cyan',
+    'lime',
+    'yellow',
+    'red'
+        ];
 
     let map; // Declare the map variable
 
