@@ -2,11 +2,6 @@
 if (map) {
     map.remove();
 }
-const L = window.L;
-
-const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
-const cmap = colors;
-
 async function generateInteractiveRainfallMap(year, month) {
     const colIndex = (year - 1984) * 12 + (month - 10);
 
@@ -35,8 +30,17 @@ async function generateInteractiveRainfallMap(year, month) {
             minOpacity: 0.5,
             radius: 15,
             blur: 10,
-            gradient: cmap.join(','),
         }).addTo(map);
+
+        // Create a colorbar legend using HTML
+        const colorbarHtml = `
+            <div id="colorbar" style="position: fixed; bottom: 10px; left: 10px; background-color: rgba(255, 255, 255, 0.8);
+                        z-index: 1000; border-radius: 5px; border: 1px solid #999; padding: 5px;">
+                <!-- Add your colorbar HTML content here -->
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', colorbarHtml);
 
         console.log('Interactive rainfall map generated.');
     } catch (error) {
@@ -66,4 +70,3 @@ function parseCSV(csvData) {
         return obj;
     });
 }
-
