@@ -1,10 +1,3 @@
-// Load Leaflet.js library (install using 'npm install leaflet')
-const L = require('leaflet');
-
-// Define a custom colormap
-const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
-const cmap = colors;
-
 // Function to generate the interactive rainfall map
 async function generateInteractiveRainfallMap(year, month) {
     const colIndex = (year - 1984) * 12 + (month - 10);
