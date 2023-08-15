@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 minOpacity: 0.5,
                 radius: 15,
                 blur: 10,
-                gradient: cmap.join(','),
+                gradient: cmap
             }).addTo(map);
 
             console.log('Interactive rainfall map generated.');
