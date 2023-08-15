@@ -1,3 +1,7 @@
+// Check if a map already exists in the container and remove it
+if (map) {
+    map.remove();
+}
 // Create a TileLayer with OpenStreetMap tiles
 const map = L.map('map').setView([33.75, -112.125], 10);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
