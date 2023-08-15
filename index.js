@@ -1,18 +1,15 @@
 // Check if a map already exists in the container and remove it
 
 document.addEventListener("DOMContentLoaded", function () {
-    //const colors = ["#0000FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF0000"];
-    //const cmap = colors.map((color, index) => ({ color, position: index / (colors.length - 1) }));
     const cmap = [
-    { color: '#0000FF', position: 0 },
-    { color: '#00FFFF', position: 0.25 },
-    { color: '#00FF00', position: 0.5 },
-    { color: '#FFFF00', position: 0.75 },
-    { color: '#FF0000', position: 1 }
-];   
-    
-    
-    let map; // Declare the map variable
+        { color: '#0000FF', position: 0 },
+        { color: '#00FFFF', position: 0.25 },
+        { color: '#00FF00', position: 0.5 },
+        { color: '#FFFF00', position: 0.75 },
+        { color: '#FF0000', position: 1 }
+    ];
+
+    let map;
 
     async function generateInteractiveRainfallMap(year, month) {
         const colIndex = (year - 1984) * 12 + (month - 10);
@@ -31,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const normalizedRainfall = rainfallValues.map(value => (value - Math.min(...rainfallValues)) / (Math.max(...rainfallValues) - Math.min(...rainfallValues)));
 
-            // Initialize the map container only if it doesn't exist
             if (!map) {
                 map = L.map('map').setView([33.75, -112.125], 10);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -41,12 +37,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const heatmapData = latitudes.map((_, index) => [latitudes[index], longitudes[index], normalizedRainfall[index]]);
+            
+            const gradientArray = cmap.map(colorObj => `${colorObj.position} ${colorObj.color}`);
+            const gradientString = gradientArray.join(',');
+
             const heatmapLayer = L.heatLayer(heatmapData, {
                 minOpacity: 0.5,
                 radius: 15,
                 blur: 10,
-                gradient: cmap.map(colorObj => `${colorObj.position.toString()} ${colorObj.color}`).join(','),
-             }).addTo(map);
+                gradient: gradientString,
+            }).addTo(map);
 
             console.log('Interactive rainfall map generated.');
         } catch (error) {
