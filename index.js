@@ -1,3 +1,14 @@
+// Create a TileLayer with OpenStreetMap tiles
+const map = L.map('map').setView([33.75, -112.125], 10);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Define a custom colormap
+const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
+const cmap = colors;
+
 // Function to generate the interactive rainfall map
 async function generateInteractiveRainfallMap(year, month) {
     const colIndex = (year - 1984) * 12 + (month - 10);
@@ -20,9 +31,6 @@ async function generateInteractiveRainfallMap(year, month) {
 
         // Normalize rainfall values to the range [0, 1] for colormap
         const normalizedRainfall = rainfallValues.map(value => (value - Math.min(...rainfallValues)) / (Math.max(...rainfallValues) - Math.min(...rainfallValues)));
-
-        // Create a map centered around Maricopa District
-        const map = L.map('map').setView([33.75, -112.125], 10);
 
         // Create a HeatMap layer with the normalized rainfall data and custom colormap
         const heatmapData = latitudes.map((_, index) => [latitudes[index], longitudes[index], normalizedRainfall[index]]);
@@ -61,13 +69,6 @@ generateButton.addEventListener('click', function () {
     generateInteractiveRainfallMap(year, month);
 });
 
-// Load Leaflet.js map
-const map = L.map('map').setView([33.75, -112.125], 10);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
 // Replace with your actual CSV parsing logic
 function parseCSV(csvData) {
     // Example: Split CSV data into rows and parse each row into an object
@@ -82,9 +83,3 @@ function parseCSV(csvData) {
         return obj;
     });
 }
-
-
-
-
-
-
