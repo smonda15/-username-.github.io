@@ -1,7 +1,7 @@
 // Check if a map already exists in the container and remove it
 
 document.addEventListener("DOMContentLoaded", function () {
-    const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
+    const colors = ["#0000FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF0000"];
     const cmap = colors.map((color, index) => ({ color, position: index / (colors.length - 1) }));
     
     
