@@ -3,11 +3,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     //const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
     const cmap = [
-    [0.0, '#0000FF'],  // Blue
-    [0.25, '#00FFFF'], // Cyan
-    [0.5, '#00FF00'],  // Green
-    [0.75, '#FFFF00'], // Yellow
-    [1.0, '#FF0000']   // Red
+    { position: 0, color: '#0000FF' },  // Blue
+    { position: 0.25, color: '#00FFFF' }, // Cyan
+    { position: 0.5, color: '#00FF00' },  // Green
+    { position: 0.75, color: '#FFFF00' }, // Yellow
+    { position: 1, color: '#FF0000' }   // Red
         ];
     
     
