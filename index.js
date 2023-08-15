@@ -2,7 +2,9 @@
 if (map) {
     map.remove();
 }
-const L = window.L;
+
+const L = require('leaflet');
+require('leaflet.heat');
 
 const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
 const cmap = colors;
