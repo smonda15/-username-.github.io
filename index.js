@@ -1,7 +1,5 @@
 // Check if a map already exists in the container and remove it
-if (map) {
-    map.remove();
-}
+
 
 
 
@@ -10,6 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const cmap = colors;
 
     async function generateInteractiveRainfallMap(year, month) {
+        if (map) {
+    map.remove();
+        }
+        
+        
         const colIndex = (year - 1984) * 12 + (month - 10);
 
         try {
