@@ -1,14 +1,17 @@
 // Check if a map already exists in the container and remove it
 
 document.addEventListener("DOMContentLoaded", function () {
-    const colors = ["#0000FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF0000"];
-    const cmap = colors.map((color, index) => ({ color, position: index / (colors.length - 1) }));
+    //const colors = ["#0000FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF0000"];
+    //const cmap = colors.map((color, index) => ({ color, position: index / (colors.length - 1) }));
+    const cmap = [
+    { color: '#0000FF', position: 0 },
+    { color: '#00FFFF', position: 0.25 },
+    { color: '#00FF00', position: 0.5 },
+    { color: '#FFFF00', position: 0.75 },
+    { color: '#FF0000', position: 1 }
+        ];    
     
     
-    
-    
-        
-
     let map; // Declare the map variable
 
     async function generateInteractiveRainfallMap(year, month) {
