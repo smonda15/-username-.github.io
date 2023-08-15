@@ -2,11 +2,11 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const cmap = [
-        { color: '#0000FF', position: 0 },
+        { color: '#0000FF', position: 0.1 },
         { color: '#00FFFF', position: 0.25 },
         { color: '#00FF00', position: 0.5 },
         { color: '#FFFF00', position: 0.75 },
-        { color: '#FF0000', position: 1 }
+        { color: '#FF0000', position: 0.9 }
     ];
 
     let map;
