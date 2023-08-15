@@ -45,10 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 minOpacity: 0.5,
                 radius: 15,
                 blur: 10,
-                const heatmapLayer = L.heatLayer(heatmapData, {
-                minOpacity: 0.5,
-                radius: 15,
-                blur: 10,
                 gradient: cmap.map(colorObj => `${colorObj.position.toString()} ${colorObj.color}`).join(','),
              }).addTo(map);
 
