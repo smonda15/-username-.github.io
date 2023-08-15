@@ -2,15 +2,13 @@
 
 
             
-          
-
 document.addEventListener("DOMContentLoaded", function () {
     const cmap = [
-        { color: '#0000FF', position: 0.1 },
-        { color: '#00FFFF', position: 0.3 },
+        { color: '#0000FF', position: 0 },
+        { color: '#00FFFF', position: 0.25 },
         { color: '#00FF00', position: 0.5 },
-        { color: '#FFFF00', position: 0.7 },
-        { color: '#FF0000', position: 0.9 }
+        { color: '#FFFF00', position: 0.75 },
+        { color: '#FF0000', position: 1 }
     ];
 
     let map;
@@ -43,45 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const heatmapData = latitudes.map((_, index) => [latitudes[index], longitudes[index], normalizedRainfall[index]]);
             
             const gradientArray = cmap.map(colorObj => `${colorObj.position} ${colorObj.color}`);
-            const gradientString = gradientArray.join(',');
-
-            const heatmapLayer = L.heatLayer(heatmapData, {
-                minOpacity: 0.5,
-                radius: 15,
-                blur: 10,
-                gradient: gradientString,
-            }).addTo(map);
-
-            console.log('Interactive rainfall map generated.');
-        } catch (error) {
-            console.error('Error fetching or parsing CSV data:', error);
-        }
-    }
-
-    const yearWidget = document.getElementById('year');
-    const monthWidget = document.getElementById('month');
-    const generateButton = document.getElementById('generate-button');
-
-    generateButton.addEventListener('click', function () {
-        const year = parseInt(yearWidget.value, 10);
-        const month = parseInt(monthWidget.value, 10);
-        generateInteractiveRainfallMap(year, month);
-    });
-
-    function parseCSV(csvData) {
-        const rows = csvData.trim().split('\n');
-        const header = rows.shift().split(',');
-        return rows.map(row => {
-            const values = row.split(',');
-            const obj = {};
-            for (let i = 0; i < header.length; i++) {
-                obj[header[i]] = parseFloat(values[i]);
-            }
-            return obj;
-        });
-    }
-});
-            const gradientString = gradientArray.join(',');
+            const gradientString = gradientArray.join(', ');
 
             const heatmapLayer = L.heatLayer(heatmapData, {
                 minOpacity: 0.5,
