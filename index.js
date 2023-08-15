@@ -1,18 +1,12 @@
 // Check if a map already exists in the container and remove it
 
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
     const cmap = colors;
 
+    let map; // Declare the map variable
+
     async function generateInteractiveRainfallMap(year, month) {
-        if (map) {
-    map.remove();
-        }
-        
-        
         const colIndex = (year - 1984) * 12 + (month - 10);
 
         try {
@@ -29,11 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const normalizedRainfall = rainfallValues.map(value => (value - Math.min(...rainfallValues)) / (Math.max(...rainfallValues) - Math.min(...rainfallValues)));
 
-            const map = L.map('map').setView([33.75, -112.125], 10);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+            // Initialize the map container only if it doesn't exist
+            if (!map) {
+                map = L.map('map').setView([33.75, -112.125], 10);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+            }
 
             const heatmapData = latitudes.map((_, index) => [latitudes[index], longitudes[index], normalizedRainfall[index]]);
             const heatmapLayer = L.heatLayer(heatmapData, {
