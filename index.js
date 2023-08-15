@@ -1,7 +1,5 @@
 // Check if a map already exists in the container and remove it
 
-
-            
 document.addEventListener("DOMContentLoaded", function () {
     const cmap = [
         { color: '#0000FF', position: 0 },
@@ -40,8 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const heatmapData = latitudes.map((_, index) => [latitudes[index], longitudes[index], normalizedRainfall[index]]);
             
-            const gradientArray = cmap.map(colorObj => `${colorObj.position} ${colorObj.color}`);
-            const gradientString = gradientArray.join(', ');
+            const gradientString = cmap.map(colorObj => colorObj.color).join(',');
 
             const heatmapLayer = L.heatLayer(heatmapData, {
                 minOpacity: 0.5,
