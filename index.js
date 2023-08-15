@@ -1,14 +1,13 @@
 // Check if a map already exists in the container and remove it
 
 document.addEventListener("DOMContentLoaded", function () {
-    const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
-    const cmap = [
-    'blue',    // Change these color values to your desired colors
-    'cyan',
-    'lime',
-    'yellow',
-    'red'
-        ];
+    //const colors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
+    const cmap = ['blue','cyan','lime','yellow','red']; 
+    
+    
+    
+    
+        
 
     let map; // Declare the map variable
 
